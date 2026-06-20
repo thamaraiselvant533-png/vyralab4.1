@@ -1,0 +1,324 @@
+@import "tailwindcss";
+
+@theme {
+  --font-sans: 'Inter', -apple-system, BlinkMacSystemFont, 'Segoe UI', sans-serif;
+  --font-display: 'Orbitron', 'Inter', sans-serif;
+  --color-vyra-black: #000000;
+  --color-vyra-dark: #0a0a0f;
+  --color-vyra-charcoal: #111118;
+  --color-vyra-surface: #16161f;
+  --color-vyra-elevated: #1e1e2a;
+  --color-vyra-blue: #4A60A8;
+  --color-vyra-blue-light: #6B82CC;
+  --color-vyra-pink: #FF007F;
+  --color-vyra-pink-light: #FF4DA6;
+  --color-vyra-text: #f0f0f5;
+  --color-vyra-text-secondary: #9898b0;
+  --color-vyra-text-muted: #5a5a72;
+}
+
+*,
+*::before,
+*::after {
+  margin: 0;
+  padding: 0;
+  box-sizing: border-box;
+}
+
+html {
+  scroll-behavior: smooth;
+  scroll-padding-top: 80px;
+}
+
+body {
+  font-family: var(--font-sans);
+  background: var(--color-vyra-black);
+  color: var(--color-vyra-text);
+  -webkit-font-smoothing: antialiased;
+  overflow-x: hidden;
+}
+
+::selection {
+  background: rgba(74, 96, 168, 0.4);
+  color: white;
+}
+
+::-webkit-scrollbar {
+  width: 6px;
+}
+
+::-webkit-scrollbar-track {
+  background: transparent;
+}
+
+::-webkit-scrollbar-thumb {
+  background: rgba(255, 255, 255, 0.08);
+  border-radius: 99px;
+}
+
+/* ─── Grid Background ─── */
+.grid-bg {
+  background-image:
+    linear-gradient(rgba(74, 96, 168, 0.04) 1px, transparent 1px),
+    linear-gradient(90deg, rgba(74, 96, 168, 0.04) 1px, transparent 1px);
+  background-size: 60px 60px;
+}
+
+/* ─── Glassmorphism ─── */
+.glass {
+  background: rgba(22, 22, 31, 0.6);
+  border: 1px solid rgba(74, 96, 168, 0.15);
+  backdrop-filter: blur(20px);
+  -webkit-backdrop-filter: blur(20px);
+}
+
+/* ─── Navbar ─── */
+.navbar-glass {
+  background: rgba(0, 0, 0, 0.75);
+  backdrop-filter: blur(16px);
+  -webkit-backdrop-filter: blur(16px);
+  border-bottom: 1px solid rgba(255, 255, 255, 0.04);
+}
+
+/* ─── Gradient Text ─── */
+.text-gradient {
+  background: linear-gradient(135deg, #6B82CC, #FF007F);
+  -webkit-background-clip: text;
+  -webkit-text-fill-color: transparent;
+  background-clip: text;
+}
+
+.stat-glow {
+  background: linear-gradient(135deg, #4A60A8, #FF007F);
+  -webkit-background-clip: text;
+  -webkit-text-fill-color: transparent;
+  background-clip: text;
+}
+
+/* ─── CTA Buttons ─── */
+.btn-gradient {
+  background: linear-gradient(135deg, #4A60A8, #FF007F);
+  position: relative;
+  overflow: hidden;
+  transition: all 0.3s ease;
+}
+
+.btn-gradient::before {
+  content: '';
+  position: absolute;
+  inset: 0;
+  background: linear-gradient(135deg, #FF007F, #4A60A8);
+  opacity: 0;
+  transition: opacity 0.4s ease;
+}
+
+.btn-gradient:hover::before {
+  opacity: 1;
+}
+
+.btn-gradient:hover {
+  box-shadow: 0 0 30px rgba(74, 96, 168, 0.4), 0 0 30px rgba(255, 0, 127, 0.35);
+  transform: translateY(-2px);
+}
+
+.btn-outline {
+  border: 1px solid #4A60A8;
+  transition: all 0.3s ease;
+}
+
+.btn-outline:hover {
+  background: rgba(74, 96, 168, 0.15);
+  box-shadow: 0 0 20px rgba(74, 96, 168, 0.4);
+  border-color: #6B82CC;
+  transform: translateY(-2px);
+}
+
+/* ─── Neon Underline ─── */
+.neon-underline {
+  position: relative;
+  display: inline-block;
+}
+
+.neon-underline::after {
+  content: '';
+  position: absolute;
+  bottom: -8px;
+  left: 0;
+  width: 60px;
+  height: 3px;
+  background: linear-gradient(90deg, #4A60A8, #FF007F);
+  border-radius: 2px;
+  box-shadow: 0 0 10px rgba(74, 96, 168, 0.4);
+}
+
+/* ─── Gradient Border on Hover ─── */
+.gradient-border {
+  position: relative;
+}
+
+.gradient-border::before {
+  content: '';
+  position: absolute;
+  inset: -1px;
+  border-radius: inherit;
+  padding: 1px;
+  background: linear-gradient(135deg, #4A60A8, #FF007F);
+  mask: linear-gradient(#fff 0 0) content-box, linear-gradient(#fff 0 0);
+  mask-composite: exclude;
+  -webkit-mask-composite: xor;
+  pointer-events: none;
+  opacity: 0;
+  transition: opacity 0.4s ease;
+}
+
+.gradient-border:hover::before {
+  opacity: 1;
+}
+
+/* ─── Glow Input ─── */
+.glow-input {
+  background: var(--color-vyra-surface);
+  border: 1px solid rgba(255, 255, 255, 0.06);
+  transition: all 0.3s ease;
+}
+
+.glow-input:focus {
+  border-color: #4A60A8;
+  box-shadow: 0 0 0 3px rgba(74, 96, 168, 0.15), 0 0 20px rgba(74, 96, 168, 0.1);
+  outline: none;
+}
+
+/* ─── Floating Orbs ─── */
+.orb {
+  position: absolute;
+  border-radius: 50%;
+  filter: blur(80px);
+  pointer-events: none;
+}
+
+.orb-blue {
+  background: #4A60A8;
+  opacity: 0.15;
+  animation: orbDrift 16s ease-in-out infinite;
+}
+
+.orb-pink {
+  background: #FF007F;
+  opacity: 0.1;
+  animation: orbDrift 20s ease-in-out infinite reverse;
+}
+
+@keyframes orbDrift {
+
+  0%,
+  100% {
+    transform: translate(0, 0) scale(1);
+  }
+
+  25% {
+    transform: translate(40px, -30px) scale(1.1);
+  }
+
+  50% {
+    transform: translate(-20px, 40px) scale(0.9);
+  }
+
+  75% {
+    transform: translate(30px, 20px) scale(1.05);
+  }
+}
+
+/* ─── Node Pulse ─── */
+.node {
+  position: absolute;
+  border-radius: 50%;
+  background: #4A60A8;
+  box-shadow: 0 0 12px rgba(74, 96, 168, 0.4);
+  animation: nodePulse 3s ease-in-out infinite;
+}
+
+.node-pink {
+  background: #FF007F;
+  box-shadow: 0 0 12px rgba(255, 0, 127, 0.35);
+}
+
+@keyframes nodePulse {
+
+  0%,
+  100% {
+    opacity: 0.4;
+    transform: scale(1);
+  }
+
+  50% {
+    opacity: 1;
+    transform: scale(1.5);
+  }
+}
+
+@keyframes linePulse {
+
+  0%,
+  100% {
+    opacity: 0.15;
+  }
+
+  50% {
+    opacity: 0.5;
+  }
+}
+
+/* ─── Reveal Animation ─── */
+.reveal {
+  opacity: 0;
+  transform: translateY(40px);
+  transition: opacity 0.8s cubic-bezier(0.16, 1, 0.3, 1), transform 0.8s cubic-bezier(0.16, 1, 0.3, 1);
+}
+
+.reveal.visible {
+  opacity: 1;
+  transform: translateY(0);
+}
+
+/* ─── Chart Grow ─── */
+.chart-bar {
+  animation: chartGrow 1.5s cubic-bezier(0.16, 1, 0.3, 1) both;
+}
+
+@keyframes chartGrow {
+  from {
+    transform: scaleY(0);
+  }
+
+  to {
+    transform: scaleY(1);
+  }
+}
+
+/* ─── Marquee ─── */
+@keyframes marquee {
+  0% {
+    transform: translateX(0);
+  }
+
+  100% {
+    transform: translateX(-50%);
+  }
+}
+
+.marquee-track {
+  animation: marquee 30s linear infinite;
+}
+
+/* ─── Fade In Up ─── */
+@keyframes fadeInUp {
+  from {
+    opacity: 0;
+    transform: translateY(30px);
+  }
+
+  to {
+    opacity: 1;
+    transform: translateY(0);
+  }
+}
