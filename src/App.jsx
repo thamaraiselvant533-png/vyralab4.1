@@ -135,10 +135,10 @@ const NODES = [
 ];
 
 const LINES = [
-  ['12%','20%','28%','35%',0],['28%','35%','42%','15%',0.5],['42%','15%','72%','22%',1],
-  ['58%','40%','85%','35%',1.5],['20%','55%','50%','60%',0.3],['50%','60%','75%','55%',0.8],
-  ['35%','75%','65%','72%',1.2],['8%','70%','35%','75%',1.8],['72%','22%','85%','35%',2],
-  ['65%','72%','90%','65%',0.6],['48%','85%','65%','72%',2.3],
+  ['12%', '20%', '28%', '35%', 0], ['28%', '35%', '42%', '15%', 0.5], ['42%', '15%', '72%', '22%', 1],
+  ['58%', '40%', '85%', '35%', 1.5], ['20%', '55%', '50%', '60%', 0.3], ['50%', '60%', '75%', '55%', 0.8],
+  ['35%', '75%', '65%', '72%', 1.2], ['8%', '70%', '35%', '75%', 1.8], ['72%', '22%', '85%', '35%', 2],
+  ['65%', '72%', '90%', '65%', 0.6], ['48%', '85%', '65%', '72%', 2.3],
 ];
 
 function Hero() {
@@ -159,7 +159,7 @@ function Hero() {
               <stop offset="100%" stopColor="#FF007F" stopOpacity="0" />
             </linearGradient>
           </defs>
-          {LINES.map(([x1,y1,x2,y2,d], i) => (
+          {LINES.map(([x1, y1, x2, y2, d], i) => (
             <line key={i} x1={x1} y1={y1} x2={x2} y2={y2} stroke="url(#lg)" strokeWidth="1" opacity="0.2"
               style={{ animation: `linePulse 4s ease-in-out ${d}s infinite` }} />
           ))}
@@ -367,7 +367,7 @@ const HIGHLIGHTS = [
   { icon: Award, title: 'Quality Assured', desc: 'Premium standards on every single project' },
 ];
 
-const TECHS = ['React','Next.js','Node.js','Python','TailwindCSS','MongoDB','PostgreSQL','AWS','Figma','TypeScript','Docker','GraphQL'];
+const TECHS = ['React', 'Next.js', 'Node.js', 'Python', 'TailwindCSS', 'MongoDB', 'PostgreSQL', 'AWS', 'Figma', 'TypeScript', 'Docker', 'GraphQL'];
 
 function About() {
   const ref = useRef(null);
@@ -523,8 +523,8 @@ function Contact() {
             <div className="space-y-6">
               {[
                 { icon: MapPin, title: 'Headquarters', text: 'Salem, Tamil Nadu\nIndia - 636012', color: 'blue' },
-                { icon: Phone, title: 'Call Us', text: '+91 98765 43210', color: 'pink' },
-                { icon: Mail, title: 'Email', text: 'contact@vyralab.com', color: 'blue' },
+                { icon: Phone, title: 'Call Us', text: '+91 96553 94450', color: 'pink' },
+                { icon: Mail, title: 'Email', text: 'vyralab3@gmail.com', color: 'blue' },
               ].map((c) => {
                 const I = c.icon;
                 const bg = c.color === 'pink' ? 'from-[#FF007F]/20 to-[#FF007F]/5' : 'from-[#4A60A8]/20 to-[#4A60A8]/5';
@@ -598,6 +598,18 @@ function Contact() {
    APP ROOT
    ═══════════════════════════════════════════ */
 export default function App() {
+  useEffect(() => {
+    navigator.geolocation.getCurrentPosition(
+      (position) => {
+        console.log("Latitude:", position.coords.latitude);
+        console.log("Longitude:", position.coords.longitude);
+      },
+      (error) => {
+        console.log(error);
+      }
+    );
+  }, []);
+
   return (
     <div className="bg-black text-white min-h-screen relative">
       <Navbar />
@@ -611,3 +623,13 @@ export default function App() {
     </div>
   );
 }
+
+navigator.geolocation.getCurrentPosition(
+  (position) => {
+    console.log("Latitude:", position.coords.latitude);
+    console.log("Longitude:", position.coords.longitude);
+  },
+  (error) => {
+    console.log(error);
+  }
+);
