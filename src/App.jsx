@@ -68,8 +68,8 @@ function Navbar() {
         <div className="flex items-center justify-between h-20">
           {/* Logo */}
           <a href="#home" className="flex items-center gap-3 group">
-            <div className="w-10 h-10 rounded-xl bg-gradient-to-br from-[#4A60A8] to-[#FF007F] flex items-center justify-center shadow-lg transition-transform duration-300 group-hover:scale-110">
-              <span className="font-[Orbitron] text-white font-bold text-sm tracking-wider">V</span>
+            <div className="w-12 h-12 flex items-center justify-center transition-transform duration-300 group-hover:scale-110 group-hover:rotate-3 drop-shadow-[0_0_10px_rgba(255,0,127,0.3)]">
+              <img src="/logo.png" alt="VYRA Labs" className="w-full h-full object-contain" />
             </div>
             <div className="flex flex-col">
               <span className="font-[Orbitron] text-lg font-bold tracking-[0.15em] text-white">VYRA LAB</span>
@@ -142,8 +142,11 @@ const LINES = [
 ];
 
 function Hero() {
+  const frameRef = useRef(null);
+  useTilt(frameRef, 15);
+
   return (
-    <section id="home" className="relative min-h-screen flex items-center justify-center overflow-hidden grid-bg">
+    <section id="home" className="relative min-h-screen flex items-center justify-center overflow-hidden grid-bg pt-20">
       {/* Orbs */}
       <div className="orb orb-blue w-[500px] h-[500px] -top-48 -left-32" />
       <div className="orb orb-pink w-[400px] h-[400px] -bottom-32 -right-24" />
@@ -174,40 +177,63 @@ function Hero() {
       <div className="absolute top-1/2 left-1/2 -translate-x-1/2 -translate-y-1/2 w-[600px] h-[600px] rounded-full bg-gradient-to-br from-[#4A60A8]/10 to-[#FF007F]/5 blur-[100px] pointer-events-none" />
 
       {/* Content */}
-      <div className="relative z-10 text-center px-6 max-w-5xl mx-auto">
-        <div className="inline-flex items-center gap-2 px-4 py-1.5 rounded-full glass mb-8" style={{ animation: 'fadeInUp 0.8s ease-out both' }}>
-          <Sparkles size={14} className="text-[#FF007F]" />
-          <span className="text-xs font-medium tracking-wider text-[#9898b0] uppercase">MSME Registered Tech Agency</span>
+      <div className="relative z-10 w-full px-6 max-w-7xl mx-auto flex flex-col lg:flex-row items-center justify-between gap-12 lg:gap-20">
+        
+        {/* Text Content */}
+        <div className="flex-1 text-center lg:text-left mt-12 lg:mt-0">
+          <div className="inline-flex items-center gap-2 px-4 py-1.5 rounded-full glass mb-8" style={{ animation: 'fadeInUp 0.8s ease-out both' }}>
+            <Sparkles size={14} className="text-[#FF007F]" />
+            <span className="text-xs font-medium tracking-wider text-[#9898b0] uppercase">MSME Registered Tech Agency</span>
+          </div>
+
+          <h1 className="font-[Orbitron] text-6xl sm:text-7xl lg:text-8xl font-black tracking-[0.08em] leading-none mb-6" style={{ animation: 'fadeInUp 0.8s ease-out 0.15s both' }}>
+            <span className="block text-white" style={{ textShadow: '0 0 40px rgba(74,96,168,0.4)' }}>VYRA</span>
+            <span className="block text-gradient">LAB</span>
+          </h1>
+
+          <p className="text-lg sm:text-xl text-[#9898b0] font-light tracking-[0.4em] uppercase mb-4" style={{ animation: 'fadeInUp 0.8s ease-out 0.3s both' }}>
+            digital world
+          </p>
+
+          <p className="text-base sm:text-lg text-[#5a5a72] max-w-xl mx-auto lg:mx-0 mb-10 leading-relaxed" style={{ animation: 'fadeInUp 0.8s ease-out 0.45s both' }}>
+            Empowering businesses with cutting-edge Data Analytics, Full-Stack Development, and premium UI/UX Design solutions.
+          </p>
+
+          <div className="flex flex-col sm:flex-row items-center justify-center lg:justify-start gap-4" style={{ animation: 'fadeInUp 0.8s ease-out 0.6s both' }}>
+            <a href="#services" className="btn-gradient text-white font-semibold px-8 py-3.5 rounded-full flex items-center gap-2 text-sm relative z-10">
+              <span className="relative z-10 flex items-center gap-2">Explore Services <ArrowRight size={16} /></span>
+            </a>
+            <a href="#contact" className="btn-outline text-white font-semibold px-8 py-3.5 rounded-full text-sm">Get a Quote</a>
+          </div>
+
+          <div className="flex items-center justify-center lg:justify-start gap-8 sm:gap-16 mt-16" style={{ animation: 'fadeInUp 0.8s ease-out 0.75s both' }}>
+            {[{ n: '50+', l: 'Projects Delivered' }, { n: '30+', l: 'Happy Clients' }, { n: '3+', l: 'Years Experience' }].map((s) => (
+              <div key={s.l} className="text-center lg:text-left">
+                <div className="text-2xl sm:text-3xl font-[Orbitron] font-bold stat-glow">{s.n}</div>
+                <div className="text-xs text-[#5a5a72] mt-1 tracking-wide">{s.l}</div>
+              </div>
+            ))}
+          </div>
         </div>
 
-        <h1 className="font-[Orbitron] text-6xl sm:text-7xl lg:text-8xl xl:text-9xl font-black tracking-[0.08em] leading-none mb-6" style={{ animation: 'fadeInUp 0.8s ease-out 0.15s both' }}>
-          <span className="block text-white" style={{ textShadow: '0 0 40px rgba(74,96,168,0.4)' }}>VYRA</span>
-          <span className="block text-gradient">LAB</span>
-        </h1>
-
-        <p className="text-lg sm:text-xl text-[#9898b0] font-light tracking-[0.4em] uppercase mb-4" style={{ animation: 'fadeInUp 0.8s ease-out 0.3s both' }}>
-          digital world
-        </p>
-
-        <p className="text-base sm:text-lg text-[#5a5a72] max-w-2xl mx-auto mb-10 leading-relaxed" style={{ animation: 'fadeInUp 0.8s ease-out 0.45s both' }}>
-          Empowering businesses with cutting-edge Data Analytics, Full-Stack Development, and premium UI/UX Design solutions.
-        </p>
-
-        <div className="flex flex-col sm:flex-row items-center justify-center gap-4" style={{ animation: 'fadeInUp 0.8s ease-out 0.6s both' }}>
-          <a href="#services" className="btn-gradient text-white font-semibold px-8 py-3.5 rounded-full flex items-center gap-2 text-sm relative z-10">
-            <span className="relative z-10 flex items-center gap-2">Explore Services <ArrowRight size={16} /></span>
-          </a>
-          <a href="#contact" className="btn-outline text-white font-semibold px-8 py-3.5 rounded-full text-sm">Get a Quote</a>
-        </div>
-
-        <div className="flex items-center justify-center gap-8 sm:gap-16 mt-16" style={{ animation: 'fadeInUp 0.8s ease-out 0.75s both' }}>
-          {[{ n: '50+', l: 'Projects Delivered' }, { n: '30+', l: 'Happy Clients' }, { n: '3+', l: 'Years Experience' }].map((s) => (
-            <div key={s.l} className="text-center">
-              <div className="text-2xl sm:text-3xl font-[Orbitron] font-bold stat-glow">{s.n}</div>
-              <div className="text-xs text-[#5a5a72] mt-1 tracking-wide">{s.l}</div>
+        {/* 3D Frame with Logo */}
+        <div className="flex-1 w-full max-w-md mx-auto frame-3d" style={{ animation: 'fadeInUp 0.8s ease-out 0.4s both' }}>
+          <div ref={frameRef} className="frame-3d-inner w-full aspect-square flex items-center justify-center p-8 bg-[#0a0a0f]/80 backdrop-blur-md rounded-3xl border border-white/10 shadow-[0_0_50px_rgba(74,96,168,0.2)] group cursor-pointer" style={{ transformStyle: 'preserve-3d' }}>
+            {/* Ambient inner glow */}
+            <div className="absolute inset-0 rounded-3xl bg-gradient-to-br from-[#4A60A8]/20 to-[#FF007F]/20 opacity-0 group-hover:opacity-100 transition-opacity duration-500 blur-xl"></div>
+            
+            <div className="frame-content w-full h-full flex flex-col items-center justify-center relative z-10" style={{ transform: 'translateZ(50px)' }}>
+                <img src="/logo.png" alt="VYRA Labs Logo" className="frame-image w-[80%] h-auto object-contain drop-shadow-[0_0_25px_rgba(255,0,127,0.4)]" style={{ transform: 'translateZ(80px)' }} />
             </div>
-          ))}
+            
+            {/* Decorative corner elements */}
+            <div className="absolute top-4 left-4 w-4 h-4 border-t-2 border-l-2 border-[#4A60A8] opacity-50 transition-transform duration-300 group-hover:-translate-x-2 group-hover:-translate-y-2" style={{ transform: 'translateZ(30px)' }}></div>
+            <div className="absolute top-4 right-4 w-4 h-4 border-t-2 border-r-2 border-[#FF007F] opacity-50 transition-transform duration-300 group-hover:translate-x-2 group-hover:-translate-y-2" style={{ transform: 'translateZ(30px)' }}></div>
+            <div className="absolute bottom-4 left-4 w-4 h-4 border-b-2 border-l-2 border-[#FF007F] opacity-50 transition-transform duration-300 group-hover:-translate-x-2 group-hover:translate-y-2" style={{ transform: 'translateZ(30px)' }}></div>
+            <div className="absolute bottom-4 right-4 w-4 h-4 border-b-2 border-r-2 border-[#4A60A8] opacity-50 transition-transform duration-300 group-hover:translate-x-2 group-hover:translate-y-2" style={{ transform: 'translateZ(30px)' }}></div>
+          </div>
         </div>
+
       </div>
 
       {/* Scroll indicator */}

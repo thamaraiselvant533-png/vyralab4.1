@@ -280,6 +280,16 @@ body {
   transform: translateY(0);
 }
 
+/* ─── 3D Frame ─── */
+.frame-3d {
+  perspective: 1200px;
+  transform-style: preserve-3d;
+}
+
+.frame-3d-inner {
+  transition: transform 0.3s cubic-bezier(0.16, 1, 0.3, 1), box-shadow 0.3s ease;
+}
+
 /* ─── Chart Grow ─── */
 .chart-bar {
   animation: chartGrow 1.5s cubic-bezier(0.16, 1, 0.3, 1) both;

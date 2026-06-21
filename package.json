@@ -32,13 +32,13 @@
   "main": "eslint.config.js",
   "repository": {
     "type": "git",
-    "url": "git+https://github.com/chellapulla52-a11y/Downloads.git"
+    "url": "https://github.com/thamaraiselvant533-png/vyralab"
   },
   "keywords": [],
   "author": "",
   "license": "ISC",
   "bugs": {
-    "url": "https://github.com/chellapulla52-a11y/Downloads/issues"
+    "url": "https://github.com/thamaraiselvant533-png/vyralab"
   },
-  "homepage": "https://github.com/chellapulla52-a11y/Downloads#readme"
+  "homepage": "https://github.com/thamaraiselvant533-png/vyralab"
 }
